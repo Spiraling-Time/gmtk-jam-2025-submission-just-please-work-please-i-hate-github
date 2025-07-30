@@ -9,6 +9,9 @@ extends CharacterBody2D
 @onready var skinny_collision = $Idle_collision_shape
 @onready var skinny_stand_collision = $"Touching ground/Idle_collision_shape"
 
+@onready var audio = $AudioStreamPlayer2D
+
+@onready var jump = $jump
 
 var speed = 500
 var gravity = 10
@@ -44,6 +47,7 @@ func _physics_process(delta: float) -> void:
 		
 	if touching_ground.get_overlapping_bodies().size() == 0: ani.play("Fall")
 	elif Input.is_action_pressed("up"):
+		jump.play()
 		ani.play("Jump")
 		velocity.y = -1*jump_height
 		turn_on_wide_collision()
@@ -51,7 +55,9 @@ func _physics_process(delta: float) -> void:
 	velocity.x = dir*speed
 	move_and_slide()
 	
-	if global_position.y >= 650.0: get_tree().reload_current_scene()
+	if global_position.y >= 200.0 and !audio.playing:
+		audio.play()
+		
 
 
 func turn_on_wide_collision():
@@ -65,3 +71,7 @@ func turn_on_skinny_collision():
 	if skinny_stand_collision.disabled:	skinny_stand_collision.disabled = false
 	if !wide_collision.disabled: wide_collision.disabled = true
 	if !wide_stand_collision.disabled: wide_stand_collision.disabled = true
+
+
+func _on_audio_stream_player_2d_finished() -> void:
+	get_tree().reload_current_scene()

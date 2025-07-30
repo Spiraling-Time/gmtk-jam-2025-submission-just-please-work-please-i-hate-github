@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ciqdw3yrro7bq"
+path="res://.godot/imported/scream-85294.mp3-2954bce011906b17f7cb4aa007bde139.mp3str"
+
+[deps]
+
+source_file="res://Game Stuff/Sound/Sound Effects/scream-85294.mp3"
+dest_files=["res://.godot/imported/scream-85294.mp3-2954bce011906b17f7cb4aa007bde139.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

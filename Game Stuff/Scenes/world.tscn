@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://decvq8cfxi5ll"]
+[gd_scene load_steps=5 format=3 uid="uid://decvq8cfxi5ll"]
 
+[ext_resource type="Script" uid="uid://b08bw2a4vpdep" path="res://Game Stuff/Code/world.gd" id="1_1xivv"]
 [ext_resource type="PackedScene" uid="uid://dwufl6h30f5bb" path="res://Game Stuff/Scenes/player.tscn" id="1_a1w2j"]
+[ext_resource type="AudioStream" uid="uid://drxjlmnvrk73q" path="res://Game Stuff/Sound/Music/birds-chirping-calm-173695.mp3" id="2_51hl3"]
 [ext_resource type="PackedScene" uid="uid://cnygutb8lvw0i" path="res://Game Stuff/Scenes/platform.tscn" id="2_f87rk"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_1xivv")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_51hl3")
 
 [node name="Player" parent="." instance=ExtResource("1_a1w2j")]
 z_index = 1
@@ -20,3 +26,5 @@ position = Vector2(-1378, 443)
 
 [node name="Platform3" parent="." instance=ExtResource("2_f87rk")]
 position = Vector2(1378, 443)
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dwufl6h30f5bb"]
+[gd_scene load_steps=15 format=3 uid="uid://dwufl6h30f5bb"]
 
 [ext_resource type="Script" uid="uid://cc3sj40rr8jua" path="res://Game Stuff/Code/player.gd" id="1_2wu1o"]
 [ext_resource type="Texture2D" uid="uid://kpwpfq5mu55l" path="res://Game Stuff/Assets/Player for Insanity  Sprite Sheet.png" id="1_c7pp4"]
+[ext_resource type="AudioStream" uid="uid://ciqdw3yrro7bq" path="res://Game Stuff/Sound/Sound Effects/scream-85294.mp3" id="2_1ln5t"]
+[ext_resource type="AudioStream" uid="uid://58guqtsv8k50" path="res://Game Stuff/Sound/Sound Effects/grunt-106134.mp3" id="3_2emqr"]
 
 [sub_resource type="Animation" id="Animation_yowue"]
 resource_name = "Fall"
@@ -110,6 +112,16 @@ size = Vector2(60, 2.5)
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_2wu1o")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_1ln5t")
+volume_db = 20.0
+pitch_scale = 1.2
+max_distance = 900000.0
+attenuation = 0.000155586
+
+[node name="jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_2emqr")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_c7pp4")
 hframes = 3
@@ -139,3 +151,5 @@ shape = SubResource("RectangleShape2D_1ln5t")
 [node name="Idle_collision_shape" type="CollisionShape2D" parent="Touching ground"]
 position = Vector2(0, 143.75)
 shape = SubResource("RectangleShape2D_4s04k")
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
