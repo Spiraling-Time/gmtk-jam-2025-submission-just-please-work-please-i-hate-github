@@ -14,6 +14,10 @@ config/name="GMTK JAM 2025 submission just please work please I HATE GITHUB"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+
 [rendering]
 
 renderer/rendering_method="mobile"
