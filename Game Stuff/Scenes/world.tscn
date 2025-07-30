@@ -7,8 +7,10 @@
 
 [node name="Player" parent="." instance=ExtResource("1_a1w2j")]
 z_index = 1
+position = Vector2(0, -386)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+limit_bottom = 360
 
 [node name="Platform" parent="." instance=ExtResource("2_f87rk")]
 position = Vector2(0, 443)

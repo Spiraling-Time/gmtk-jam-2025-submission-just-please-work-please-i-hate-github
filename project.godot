@@ -50,4 +50,4 @@ right={
 [rendering]
 
 renderer/rendering_method="mobile"
-environment/defaults/default_clear_color=Color(0, 0.676895, 0.996713, 1)
+environment/defaults/default_clear_color=Color(7.5084e-06, 0.648851, 0.956414, 1)
