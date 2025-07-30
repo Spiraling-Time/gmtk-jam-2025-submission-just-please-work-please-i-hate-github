@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+@onready var world = $".."
+
+
 @onready var ani = $animationplayer
 @onready var sprite = $Sprite2D
 @onready var touching_ground = $"Touching ground"
@@ -13,10 +16,13 @@ extends CharacterBody2D
 
 @onready var jump = $jump
 
+
 var speed = 500
 var gravity = 10
 var dir
 var jump_height = 340
+
+var far_enough: bool = false
 
 func _ready() -> void:
 	ani.play("Idle")
@@ -57,8 +63,13 @@ func _physics_process(delta: float) -> void:
 	
 	if global_position.y >= 200.0 and !audio.playing:
 		audio.play()
-		
-
+	
+	
+	
+	if global_position.y >= 450.0 and ! far_enough:
+		world.score += 1
+		world.save_score()
+		far_enough = true
 
 func turn_on_wide_collision():
 	if !skinny_collision.disabled: skinny_collision.disabled = true
@@ -74,4 +85,5 @@ func turn_on_skinny_collision():
 
 
 func _on_audio_stream_player_2d_finished() -> void:
+
 	get_tree().reload_current_scene()
