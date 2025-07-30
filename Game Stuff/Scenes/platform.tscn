@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnygutb8lvw0i"]
+
+[ext_resource type="Texture2D" uid="uid://bt8x4ixcdbnqc" path="res://Game Stuff/Assets/Platforms for Insanity (1).png" id="1_6yogu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbmm3"]
+size = Vector2(608, 361)
+
+[node name="Platform" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12.5)
+shape = SubResource("RectangleShape2D_lbmm3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6yogu")

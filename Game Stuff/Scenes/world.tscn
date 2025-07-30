@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://decvq8cfxi5ll"]
+[gd_scene load_steps=3 format=3 uid="uid://decvq8cfxi5ll"]
+
+[ext_resource type="PackedScene" uid="uid://dwufl6h30f5bb" path="res://Game Stuff/Scenes/player.tscn" id="1_a1w2j"]
+[ext_resource type="PackedScene" uid="uid://cnygutb8lvw0i" path="res://Game Stuff/Scenes/platform.tscn" id="2_f87rk"]
 
 [node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_a1w2j")]
+z_index = 1
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="Platform" parent="." instance=ExtResource("2_f87rk")]
+position = Vector2(0, 443)
+
+[node name="Platform2" parent="." instance=ExtResource("2_f87rk")]
+position = Vector2(-1378, 443)
+
+[node name="Platform3" parent="." instance=ExtResource("2_f87rk")]
+position = Vector2(1378, 443)
