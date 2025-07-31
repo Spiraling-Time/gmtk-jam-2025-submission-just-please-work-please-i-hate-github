@@ -19,6 +19,8 @@ var score = 0
 
 @onready var swordthingie = $CanvasLayer/swords
 
+@onready var player = $Fake_world/Player
+
 var dragons_slayed = 0
 
 var fake_world = preload("res://Game Stuff/Scenes/fake_world.tscn")
@@ -26,6 +28,7 @@ var fake_world = preload("res://Game Stuff/Scenes/fake_world.tscn")
 var music_type = "calm"
 
 var exit = 0
+
 
 func _ready() -> void:
 	#save_score()
@@ -47,7 +50,7 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("restart_world"):
 		Narrator.text = ""
-		score = 0
+		score = 56
 		save_score()
 		reset()
 		
@@ -55,11 +58,12 @@ func _physics_process(delta: float) -> void:
 		
 	so_called_score.text = "%d" % score
 	
+	
 	if score > 57 and score < 71:
-		youhere.visible = true
-		distancetext.text = "%d" % abs(youhere.global_position.x)
-	else:
-		youhere.visible = false
+		if youhere.global_position != Vector2.ZERO:
+			youhere.visible = true
+			distancetext.text = "%d" % abs(youhere.global_position.x)
+	else: youhere.visible = false
 	
 	if score > 71 and score < 100:
 		basic_label.text = "%d" % dragons_slayed
@@ -177,7 +181,6 @@ func load_data_screams():
 func reset():
 	if has_node("Fake_world"):
 		var faky = get_node("Fake_world")
-		for child in faky.get_children(): child.queue_free()
 		faky.queue_free()
 	await get_tree().process_frame
 	var new_world = fake_world.instantiate()
@@ -188,3 +191,7 @@ func reset():
 
 func _on_background_music_finished() -> void:
 	audio.play()
+
+
+
+	

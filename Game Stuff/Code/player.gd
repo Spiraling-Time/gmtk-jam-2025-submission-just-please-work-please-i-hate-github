@@ -33,6 +33,7 @@ var scream_type = "death"
 
 @onready var pop = $popper
 
+var resetting:bool = false
 
 func _ready() -> void:
 	ani.play("Idle")
@@ -72,7 +73,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravity	
 		if Input.is_action_pressed("down"):
 			velocity.y += gravity*2
-		
+			turn_on_skinny_collision()
+			
+			
 	if touching_ground.get_overlapping_bodies().size() == 0: ani.play("Fall")
 	elif Input.is_action_pressed("up"):
 		jump.play()
@@ -83,7 +86,9 @@ func _physics_process(delta: float) -> void:
 	velocity.x = dir*speed
 	move_and_slide()
 	
-	if global_position.y >= 200.0 and !audio.playing:
+	if global_position.y >= 200.0 and !resetting:
+		resetting = true
+		audio.play()
 		world.youhere.global_position = global_position
 		
 		if world.score > 71 and world.score < 100:
@@ -96,7 +101,7 @@ func _physics_process(delta: float) -> void:
 				fake_world.hide_dragons()
 				pop.play()
 		
-		audio.play()
+		
 	
 	
 	

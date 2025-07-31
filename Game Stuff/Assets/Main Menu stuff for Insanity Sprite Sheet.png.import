@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2ek2b1jssgwr"
-path="res://.godot/imported/Main Menu stuff for Insanity Sprite Sheet.png-979daa22874bc56aa167914731f607f8.ctex"
+uid="uid://cwegw1yat8ykp"
+path="res://.godot/imported/Main Menu stuff for Insanity sprite sheet.png-31a36efc1cc53a930df32c94fb6d127e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game Stuff/Assets/Main Menu stuff for Insanity Sprite Sheet.png"
-dest_files=["res://.godot/imported/Main Menu stuff for Insanity Sprite Sheet.png-979daa22874bc56aa167914731f607f8.ctex"]
+source_file="res://Game Stuff/Assets/Main Menu stuff for Insanity sprite sheet.png"
+dest_files=["res://.godot/imported/Main Menu stuff for Insanity sprite sheet.png-31a36efc1cc53a930df32c94fb6d127e.ctex"]
 
 [params]
 
