@@ -15,7 +15,9 @@ var score = 0
 @onready var youhere = $"you got here"
 @onready var distancetext = $"you got here/distance"
 
-@onready var basic_label = $CanvasLayer/Icon1/Label
+@onready var basic_label = $CanvasLayer/Label
+
+@onready var swordthingie = $CanvasLayer/swords
 
 var dragons_slayed = 0
 
@@ -34,9 +36,15 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("reset"):
-		score = 70#0
-		save_score()
-		reset()
+		if has_node("Fake_world"): get_node("Fake_world").queue_free()
+		await get_tree().process_frame
+		if has_node("Fake_world"): get_node("Fake_world").queue_free()
+		else:
+			score = 70#0
+			save_score()
+			reset()
+		
+		
 		
 	so_called_score.text = "%d" % score
 	
@@ -48,6 +56,11 @@ func _physics_process(delta: float) -> void:
 	
 	if score > 71 and score < 100:
 		basic_label.text = "%d" % dragons_slayed
+		swordthingie.visible = true
+	else: 
+		basic_label.text = ""
+		swordthingie.visible = false
+	
 	
 	if score >= 20 and score <= 51:
 		Icon1.texture = load("res://Game Stuff/Assets/Skull for Insanity.png")
@@ -68,7 +81,7 @@ func _physics_process(delta: float) -> void:
 		if music_type != "GLORIOUS":
 			music_type = "GLORIOUS"
 			audio.stream = load("res://Game Stuff/Sound/Music/medieval-kingdom-loop-366815.mp3")
-			audio.volume_db = -10.0
+			audio.volume_db = -5.0
 			audio.play()
 	else:
 		if music_type != "calm":
@@ -118,8 +131,12 @@ func _physics_process(delta: float) -> void:
 			Narrator.text = ""
 		elif  score <= 71:
 			Narrator.text = "TA-DAAAA!!!"
-		elif  score <= 72:
-			Narrator.text = "BRAVE KNIGHT! Dragons are storming the castle! Defeat them as fast as possible!"
+		elif  score <= 74:
+			Narrator.text = "BRAVE KNIGHT! Dragons are storming the castle! Defeat them before they inflate!!"
+		elif  score <= 76:
+			Narrator.text = "Listen, the inflatable dragons were on sale! Stop questioning me, you'll miss the dragons!"
+		elif  score <= 80:
+			Narrator.text = "Make sure to HOLD DOWN so that you can slice through the dragons as fast as possible."
 
 
 
@@ -150,7 +167,6 @@ func load_data_screams():
 
 
 func reset():
-	await get_tree().process_frame
 	if has_node("Fake_world"): get_node("Fake_world").queue_free()
 	await get_tree().process_frame
 	add_child(fake_world.instantiate())

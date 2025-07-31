@@ -1,9 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dwufl6h30f5bb"]
+[gd_scene load_steps=17 format=3 uid="uid://dwufl6h30f5bb"]
 
 [ext_resource type="Script" uid="uid://cc3sj40rr8jua" path="res://Game Stuff/Code/player.gd" id="1_2wu1o"]
 [ext_resource type="Texture2D" uid="uid://kpwpfq5mu55l" path="res://Game Stuff/Assets/Player for Insanity  Sprite Sheet.png" id="1_c7pp4"]
 [ext_resource type="AudioStream" uid="uid://b8e6ee7bvvp2c" path="res://Game Stuff/Sound/Sound Effects/scream-85294.mp3" id="2_1ln5t"]
 [ext_resource type="AudioStream" uid="uid://58guqtsv8k50" path="res://Game Stuff/Sound/Sound Effects/jump.mp3" id="3_2emqr"]
+[ext_resource type="Texture2D" uid="uid://q4kxlao25q6u" path="res://Game Stuff/Assets/Sword for Insanity.png" id="5_4s04k"]
+[ext_resource type="AudioStream" uid="uid://cgiufrm5ihe1b" path="res://Game Stuff/Sound/Sound Effects/party-balloon-pop-323588.mp3" id="6_yowue"]
 
 [sub_resource type="Animation" id="Animation_yowue"]
 resource_name = "Fall"
@@ -151,3 +153,13 @@ shape = SubResource("RectangleShape2D_1ln5t")
 [node name="Idle_collision_shape" type="CollisionShape2D" parent="Touching ground"]
 position = Vector2(0, 143.75)
 shape = SubResource("RectangleShape2D_4s04k")
+
+[node name="Sword" type="Sprite2D" parent="."]
+visible = false
+z_index = 4
+position = Vector2(0, -203)
+texture = ExtResource("5_4s04k")
+
+[node name="popper" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_yowue")
+volume_db = 5.0

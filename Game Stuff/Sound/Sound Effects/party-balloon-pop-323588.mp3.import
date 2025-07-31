@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cgiufrm5ihe1b"
+path="res://.godot/imported/party-balloon-pop-323588.mp3-b600bcb94cfc4e672e077b4a1b875db9.mp3str"
+
+[deps]
+
+source_file="res://Game Stuff/Sound/Sound Effects/party-balloon-pop-323588.mp3"
+dest_files=["res://.godot/imported/party-balloon-pop-323588.mp3-b600bcb94cfc4e672e077b4a1b875db9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

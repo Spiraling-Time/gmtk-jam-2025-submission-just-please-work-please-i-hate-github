@@ -29,6 +29,10 @@ var scream_type = "death"
 @onready var dragons1 = $"../Dragons1"
 @onready var dragons2 = $"../Dragons2"
 
+@onready var sword = $Sword
+
+@onready var pop = $popper
+
 
 func _ready() -> void:
 	ani.play("Idle")
@@ -43,7 +47,8 @@ func _ready() -> void:
 			scream_type = "death"
 			audio.volume_db = 20.0
 			audio.stream = load("res://Game Stuff/Sound/Sound Effects/scream-85294.mp3")
-			
+	if world.score > 71 and world.score < 100: sword.visible = true
+	else: sword.visible = false	
 
 
 func _physics_process(delta: float) -> void:
@@ -84,9 +89,12 @@ func _physics_process(delta: float) -> void:
 		if world.score > 71 and world.score < 100:
 			if fake_world.side == "left" and dragons1.position.y > -100:
 				if global_position.x < 0: world.dragons_slayed += 1
+				fake_world.hide_dragons()
+				pop.play()
 			elif fake_world.side == "right" and dragons2.position.y > -100:
 				if global_position.x > 0: world.dragons_slayed += 1
-		
+				fake_world.hide_dragons()
+				pop.play()
 		
 		audio.play()
 	
@@ -96,7 +104,9 @@ func _physics_process(delta: float) -> void:
 		world.score += 1
 		world.save_score()
 		far_enough = true
+	
 
+	
 func turn_on_wide_collision():
 	#if !skinny_collision.disabled: skinny_collision.disabled = true
 	if !skinny_stand_collision.disabled:	skinny_stand_collision.disabled = true

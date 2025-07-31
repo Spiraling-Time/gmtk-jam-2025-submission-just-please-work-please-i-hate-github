@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://decvq8cfxi5ll"]
+[gd_scene load_steps=10 format=3 uid="uid://decvq8cfxi5ll"]
 
 [ext_resource type="Script" uid="uid://b08bw2a4vpdep" path="res://Game Stuff/Code/world.gd" id="1_1xivv"]
 [ext_resource type="AudioStream" uid="uid://drxjlmnvrk73q" path="res://Game Stuff/Sound/Music/birds-chirping-calm-173695.mp3" id="2_51hl3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b77a3t115an1u" path="res://Game Stuff/Assets/Skull for Insanity.png" id="3_f87rk"]
 [ext_resource type="LabelSettings" uid="uid://bxnwsfvjb6cao" path="res://Game Stuff/Scenes/small_font.tres" id="4_51hl3"]
 [ext_resource type="LabelSettings" uid="uid://cv025oepede5c" path="res://Game Stuff/Scenes/new_label_settings.tres" id="6_dy18c"]
+[ext_resource type="Texture2D" uid="uid://q4kxlao25q6u" path="res://Game Stuff/Assets/Sword for Insanity.png" id="7_wogqy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_a1w2j"]
 font_size = 100
@@ -73,22 +74,6 @@ visible = false
 position = Vector2(830, 238)
 texture = ExtResource("3_f87rk")
 
-[node name="Label" type="Label" parent="CanvasLayer/Icon1"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -636.0
-offset_top = -324.5
-offset_right = -556.0
-offset_bottom = -228.5
-grow_horizontal = 2
-grow_vertical = 2
-label_settings = ExtResource("6_dy18c")
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Narrator" type="Label" parent="CanvasLayer"]
 z_index = 1
 anchors_preset = 5
@@ -102,5 +87,26 @@ label_settings = SubResource("LabelSettings_51hl3")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="swords" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(650, 223)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_wogqy")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -295.0
+offset_top = -356.5
+offset_right = -215.0
+offset_bottom = -260.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = ExtResource("6_dy18c")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="finished" from="Background music" to="." method="_on_background_music_finished"]
