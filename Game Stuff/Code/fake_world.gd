@@ -15,6 +15,8 @@ func _on_death_scream_finished() -> void:
 
 func _ready() -> void:
 	if world.score > 71 and world.score < 100:
+		dragons1.position = Vector2(-689.0, 443.0)
+		dragons2.position = Vector2(689.0, 443.0)
 		dragons1.scale = Vector2(1,1)
 		dragons2.scale = Vector2(-1,1)
 		if randi_range(0,1) == 1:
@@ -34,12 +36,15 @@ func _physics_process(delta: float) -> void:
 	if world.score > 71 and world.score < 100:
 		if side == "left":
 			dragons1.position.y -= 7
-			if dragons1.position.y <= -100: dragons1.scale = Vector2(2,2)
-
+			if dragons1.position.y <= -100:
+				dragons1.scale = Vector2(1.5,1.5)
+				dragons1.position.x = -300
+			
 		elif side == "right":
 			dragons2.position.y -= 7
-			if dragons2.position.y <= -100: dragons2.scale = Vector2(-2,2)
-			
+			if dragons2.position.y <= -100:
+				dragons2.scale = Vector2(-1.5,1.5)
+				dragons2.position.x = 300
 		
 
 func hide_dragons():

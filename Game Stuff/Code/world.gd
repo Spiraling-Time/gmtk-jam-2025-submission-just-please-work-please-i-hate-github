@@ -25,6 +25,8 @@ var fake_world = preload("res://Game Stuff/Scenes/fake_world.tscn")
 
 var music_type = "calm"
 
+var exit = 0
+
 func _ready() -> void:
 	#save_score()
 	load_data_screams()
@@ -35,11 +37,15 @@ func _ready() -> void:
 	randomize()
 	
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("delete"):
-		if has_node("Fake_world"): get_node("Fake_world").queue_free()
-	if Input.is_action_pressed("reset"):
-		if has_node("Fake_world"): get_node("Fake_world").queue_free()
-		await get_tree().process_frame
+	if Input.is_action_pressed("exit"):
+		exit += 1
+		if exit >= 1000:
+			get_tree().change_scene_to_file("res://Game Stuff/Scenes/main_menu.tscn")
+	else: exit = 0
+	
+	
+
+	if Input.is_action_just_pressed("restart_world"):
 		score = 90#70#0
 		save_score()
 		reset()
@@ -168,9 +174,14 @@ func load_data_screams():
 
 
 func reset():
-	if has_node("Fake_world"): get_node("Fake_world").queue_free()
+	if has_node("Fake_world"):
+		var faky = get_node("Fake_world")
+		for child in faky.get_children(): child.queue_free()
+		faky.queue_free()
 	await get_tree().process_frame
-	add_child(fake_world.instantiate())
+	var new_world = fake_world.instantiate()
+	new_world.name = "Fake_world"
+	add_child(new_world)
 	
 
 

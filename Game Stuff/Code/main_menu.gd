@@ -8,6 +8,7 @@ extends Node2D
 
 var locked: bool = true
 
+var game_mode = "normal"
 
 func _ready() -> void:
 	if locked: sprite.frame = 0
@@ -20,7 +21,7 @@ func _on_controls_pressed() -> void:
 
 
 func _on_begin_pressed() -> void:
-	pass # Replace with function body.
+	if game_mode == "normal": get_tree().change_scene_to_file("res://Game Stuff/Scenes/world.tscn")
 
 
 func _on_level_select_pressed() -> void:
