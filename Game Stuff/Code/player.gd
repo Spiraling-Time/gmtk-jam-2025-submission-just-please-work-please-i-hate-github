@@ -29,7 +29,7 @@ func _ready() -> void:
 	turn_on_wide_collision()
 
 func _physics_process(delta: float) -> void:
-		
+	print(global_position.y)
 	if Input.is_action_pressed("left"):
 		sprite.flip_h = false
 		if touching_ground.get_overlapping_bodies().size() != 0: ani.play("Run")
@@ -47,9 +47,9 @@ func _physics_process(delta: float) -> void:
 		
 	if touching_ground.get_overlapping_bodies().size() != 0: velocity.y = 0
 	else:
-		velocity.y += gravity
-
-		
+		velocity.y += gravity	
+		if Input.is_action_pressed("down"):
+			velocity.y += gravity*2
 		
 	if touching_ground.get_overlapping_bodies().size() == 0: ani.play("Fall")
 	elif Input.is_action_pressed("up"):
@@ -72,13 +72,13 @@ func _physics_process(delta: float) -> void:
 		far_enough = true
 
 func turn_on_wide_collision():
-	if !skinny_collision.disabled: skinny_collision.disabled = true
+	#if !skinny_collision.disabled: skinny_collision.disabled = true
 	if !skinny_stand_collision.disabled:	skinny_stand_collision.disabled = true
 	if wide_collision.disabled: wide_collision.disabled = false
 	if wide_stand_collision.disabled: wide_stand_collision.disabled = false
 
 func turn_on_skinny_collision():
-	if skinny_collision.disabled: skinny_collision.disabled = false
+	#if skinny_collision.disabled: skinny_collision.disabled = false
 	if skinny_stand_collision.disabled:	skinny_stand_collision.disabled = false
 	if !wide_collision.disabled: wide_collision.disabled = true
 	if !wide_stand_collision.disabled: wide_stand_collision.disabled = true
