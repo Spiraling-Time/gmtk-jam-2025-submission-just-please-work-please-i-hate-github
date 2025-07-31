@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://decvq8cfxi5ll"]
+[gd_scene load_steps=8 format=3 uid="uid://decvq8cfxi5ll"]
 
 [ext_resource type="Script" uid="uid://b08bw2a4vpdep" path="res://Game Stuff/Code/world.gd" id="1_1xivv"]
 [ext_resource type="AudioStream" uid="uid://drxjlmnvrk73q" path="res://Game Stuff/Sound/Music/birds-chirping-calm-173695.mp3" id="2_51hl3"]
@@ -9,6 +9,11 @@
 [sub_resource type="LabelSettings" id="LabelSettings_a1w2j"]
 font_size = 100
 outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_51hl3"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
 outline_color = Color(0, 0, 0, 1)
 
 [node name="World" type="Node2D"]
@@ -70,7 +75,7 @@ texture = ExtResource("3_f87rk")
 z_index = 1
 offset_right = 1921.0
 offset_bottom = 150.0
-label_settings = ExtResource("4_51hl3")
+label_settings = SubResource("LabelSettings_51hl3")
 horizontal_alignment = 1
 vertical_alignment = 1
 
