@@ -8,7 +8,7 @@ var score = 0
 @onready var audio = $"Background music"
 @onready var so_called_score = $CanvasLayer/Scorer
 @onready var Narrator = $CanvasLayer/Narrator
-
+@onready var Icon1 = $CanvasLayer/Icon1
 
 
 var fake_world = preload("res://Game Stuff/Scenes/fake_world.tscn")
