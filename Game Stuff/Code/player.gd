@@ -26,6 +26,10 @@ var far_enough: bool = false
 
 var scream_type = "death"
 
+@onready var dragons1 = $"../Dragons1"
+@onready var dragons2 = $"../Dragons2"
+
+
 func _ready() -> void:
 	ani.play("Idle")
 	turn_on_wide_collision()
@@ -76,6 +80,14 @@ func _physics_process(delta: float) -> void:
 	
 	if global_position.y >= 200.0 and !audio.playing:
 		world.youhere.global_position = global_position
+		
+		if world.score > 71 and world.score < 100:
+			if fake_world.side == "left" and dragons1.position.y > -100:
+				if global_position.x < 0: world.dragons_slayed += 1
+			elif fake_world.side == "right" and dragons2.position.y > -100:
+				if global_position.x > 0: world.dragons_slayed += 1
+		
+		
 		audio.play()
 	
 	

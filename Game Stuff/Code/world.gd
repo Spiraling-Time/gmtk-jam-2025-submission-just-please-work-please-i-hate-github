@@ -34,7 +34,7 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("reset"):
-		score = 68#0
+		score = 70#0
 		save_score()
 		reset()
 		
@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	elif score > 71 and score < 80:
 		Icon1.texture = load("res://Game Stuff/Assets/Dragon Head for Insanity.png")
 		Icon1.visible = true
-	elif score > 80 and score < 100:
+	elif score >= 80 and score < 100:
 		Icon1.texture = load("res://Game Stuff/Assets/Dragon Head for Insanity (1).png")
 		Icon1.visible = true
 	else:

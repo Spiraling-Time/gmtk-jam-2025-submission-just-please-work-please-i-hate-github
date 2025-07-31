@@ -4,16 +4,10 @@ extends Node2D
 @onready var dragons1 = $Dragons1
 @onready var dragons2 = $Dragons2
 
-@onready var player = $Player
 
 var side
 
 func _on_death_scream_finished() -> void:
-	if world.score > 71 and world.score < 100:
-		if side == "left":
-			if player.global_position.x < 0: world.dragons_slayed += 1
-		elif side == "right":
-			if player.global_position.x > 0: world.dragons_slayed += 1
 	world.screams += 1
 	world.save_screams()
 	world.reset()
@@ -33,3 +27,11 @@ func _ready() -> void:
 		side = null
 		dragons1.visible = false
 		dragons2.visible = false
+
+func _physics_process(delta: float) -> void:
+	if world.score > 71 and world.score < 100:
+		if side == "left":
+			dragons1.position.y -= 6
+		elif side == "right":
+			dragons2.position.y -= 6
+	print("dragon1: ", dragons1.global_position.y, " dragon2: ", dragons2.global_position.y)
