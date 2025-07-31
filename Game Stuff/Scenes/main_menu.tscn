@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://7o2nht35wcfc"]
+[gd_scene load_steps=4 format=3 uid="uid://7o2nht35wcfc"]
 
 [ext_resource type="Script" uid="uid://f0f13atumfvy" path="res://Game Stuff/Code/main_menu.gd" id="1_ffijb"]
 [ext_resource type="Texture2D" uid="uid://2ek2b1jssgwr" path="res://Game Stuff/Assets/Main Menu stuff for Insanity Sprite Sheet.png" id="1_vu02h"]
+[ext_resource type="AudioStream" uid="uid://d0dlkkw16twsw" path="res://Game Stuff/Sound/Music/lullaby-to-the-singing-of-a-cricket-304017.mp3" id="2_5cq51"]
 
 [node name="Main Menu" type="Node2D"]
 script = ExtResource("1_ffijb")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_5cq51")
+volume_db = 2.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -56,6 +61,7 @@ offset_bottom = 261.0
 focus_mode = 0
 flat = true
 
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
 [connection signal="pressed" from="Buttons/Level Select" to="." method="_on_level_select_pressed"]
 [connection signal="pressed" from="Buttons/Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="Buttons/Begin" to="." method="_on_begin_pressed"]

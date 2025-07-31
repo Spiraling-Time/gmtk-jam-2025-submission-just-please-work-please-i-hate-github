@@ -39,14 +39,14 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("exit"):
 		exit += 1
-		if exit >= 1000:
+		if exit >= 50:
 			get_tree().change_scene_to_file("res://Game Stuff/Scenes/main_menu.tscn")
 	else: exit = 0
 	
 	
 
 	if Input.is_action_just_pressed("restart_world"):
-		score = 90#70#0
+		score = 0
 		save_score()
 		reset()
 		

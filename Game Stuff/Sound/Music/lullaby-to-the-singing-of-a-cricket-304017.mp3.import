@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d0dlkkw16twsw"
+path="res://.godot/imported/lullaby-to-the-singing-of-a-cricket-304017.mp3-074d0966756197990f8ab1eec7b54b96.mp3str"
+
+[deps]
+
+source_file="res://Game Stuff/Sound/Music/lullaby-to-the-singing-of-a-cricket-304017.mp3"
+dest_files=["res://.godot/imported/lullaby-to-the-singing-of-a-cricket-304017.mp3-074d0966756197990f8ab1eec7b54b96.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

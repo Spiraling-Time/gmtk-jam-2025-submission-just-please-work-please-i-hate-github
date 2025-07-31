@@ -1,18 +1,42 @@
 extends Node2D
 
+var save_path_first_time = "user://variable.first_time"
+var first_time: bool = true
+
 @onready var sprite = $Sprite2D
 
 @onready var main_buttons = $Buttons
 
 @onready var exit_button = $Exit
 
+@onready var audio = $AudioStreamPlayer2D
+
 var locked: bool = true
 
 var game_mode = "normal"
 
 func _ready() -> void:
-	if locked: sprite.frame = 0
-	else: sprite.frame = 1
+	#save_first_time()
+	load_data_first_time()
+	if first_time:
+		sprite.frame = 4
+		main_buttons.visible = false
+		exit_button.visible = true
+	else:
+		if locked: sprite.frame = 0
+		else: sprite.frame = 1
+	audio.play()
+
+func save_first_time():
+	var file = FileAccess.open(save_path_first_time, FileAccess.WRITE)
+	file.store_var(first_time)
+
+
+func load_data_first_time():
+	if FileAccess.file_exists(save_path_first_time):
+		var file = FileAccess.open(save_path_first_time, FileAccess.READ)
+		first_time = file.get_var()
+
 
 func _on_controls_pressed() -> void:
 	sprite.frame = 2.0
@@ -39,3 +63,9 @@ func _on_exit_pressed() -> void:
 	exit_button.visible = false
 	if locked: sprite.frame = 0
 	else: sprite.frame = 1
+	if first_time:
+		first_time = false
+		save_first_time()
+
+func _on_audio_stream_player_2d_finished() -> void:
+	audio.play()
