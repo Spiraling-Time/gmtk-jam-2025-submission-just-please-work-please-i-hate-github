@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("restart_world"):
 		Narrator.text = ""
-		score = 56
+		score = 0
 		save_score()
 		reset()
 		
@@ -65,7 +65,7 @@ func _physics_process(delta: float) -> void:
 			distancetext.text = "%d" % abs(youhere.global_position.x)
 	else: youhere.visible = false
 	
-	if score > 71 and score < 100:
+	if score > 71 and score < 110:
 		basic_label.text = "%d" % dragons_slayed
 		swordthingie.visible = true
 	else: 
@@ -82,13 +82,13 @@ func _physics_process(delta: float) -> void:
 	elif score > 71 and score < 80:
 		Icon1.texture = load("res://Game Stuff/Assets/Dragon Head for Insanity.png")
 		Icon1.visible = true
-	elif score >= 80 and score < 100:
+	elif score >= 80 and score < 110:
 		Icon1.texture = load("res://Game Stuff/Assets/Dragon Head for Insanity (1).png")
 		Icon1.visible = true
 	else:
 		Icon1.visible = false
 	
-	if score > 70 and score < 100:
+	if score > 70 and score < 110:
 		if music_type != "GLORIOUS":
 			music_type = "GLORIOUS"
 			audio.stream = load("res://Game Stuff/Sound/Music/medieval-kingdom-loop-366815.mp3")
@@ -110,9 +110,9 @@ func _physics_process(delta: float) -> void:
 			Narrator.text = "Oh my, you certainly have been busy. You died %d times!" % score
 		elif  score <= 23:
 			Narrator.text = "Well, don't let me stop you! I'm sure whatever you are doing is very important."
-		elif  score == 24:
+		elif  score <= 24:
 			Narrator.text = ""
-		elif  score == 25:
+		elif  score <= 25:
 			Narrator.text = "..."
 		elif  score <= 28:
 			Narrator.text = "Are you trying to reach another platform? You keep missing it."
@@ -146,14 +146,56 @@ func _physics_process(delta: float) -> void:
 			Narrator.text = "BRAVE KNIGHT! Dragons are storming the castle! Defeat them before they inflate!!"
 		elif  score <= 76:
 			Narrator.text = "Listen, the inflatable dragons were on sale! Stop questioning me, you'll miss the dragons!"
-		elif  score <= 99:
+		elif  score <= 109:
 			Narrator.text = "Make sure to HOLD DOWN so that you can slice through the dragons as fast as possible."
-		elif  score == 100:
+		elif  score <= 111:
 			Narrator.text = "Nice job! You slew %d dragons!" % dragons_slayed
-
-
-
-
+		elif  score <= 113:
+			Narrator.text = "You should be proud of yourself!"
+		elif  score <= 115:
+			Narrator.text = "..."
+		elif  score <= 117:
+			Narrator.text = "You died, skydived, saw how far you could go, and fought dragons!"
+		elif  score <= 119:
+			Narrator.text = "You fell (or jumped) left or right."
+		elif  score <= 121:
+			Narrator.text = "Both are true."
+		elif  score <= 123:
+			Narrator.text = "You did the same thing over, and over, and over, and the only thing that changed was how you viewed it."
+		elif  score <= 125:
+			Narrator.text = "When something happens over and over, it is NOT insane to expect something new. Even if nothing objectively changed, your perspective can change."
+		elif  score <= 127:
+			Narrator.text = "You do something 100 times, hear something 100 times, see something 100 times, and you could find something new."
+		elif  score <= 129:
+			Narrator.text = "This game is a small example of that. I hoped you learned something, or at least had some fun. Now, get up, and go perceive the world anew!"
+		elif  score <= 131:
+			Narrator.text = "Open a door, take a walk, touch some grass! Stop playing this! Look at everything differently!"
+		elif  score <= 133:
+			Narrator.text = "Go on! Shoo!"
+		elif  score <= 135:
+			Narrator.text = "..."
+		elif  score <= 137:
+			Narrator.text = "Oh, you want more? Fine. Here's some bonus modes, and a level select. Go back to the main menu to unlock them (HOLD SPACE)."
+		elif  score <= 139:
+			Narrator.text = "Thats it."
+		elif  score <= 139:
+			Narrator.text = "Or really, thats everything. Make your own goals! (And head to the main menu if you want any of the modifiers present in the game)."
+		elif  score <= 141:
+			Narrator.text = "Enjoy!"
+		elif  score <= 200:
+			Narrator.text = ""
+		elif  score <= 300:
+			Narrator.text = "That's some dedication."
+		elif  score <= 400:
+			Narrator.text = "That's some serious dedication."
+		elif  score <= 500:
+			Narrator.text = "Comment an idea for a modifier to how the game looks and your favorite food. I'll check back and add in a few I like!"
+		elif  score <= 600:
+			Narrator.text = "Go touch grass."
+		elif  score <= 700:
+			Narrator.text = "Bye. I'm glad you are this invested, but I have stuff to do."
+		elif  score >= 750:
+			Narrator.text = ""
 
 
 func save_score():

@@ -4,5 +4,5 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 
 func _ready() -> void:
-	if world.score > 70 and world.score < 100: sprite.texture = load("res://Game Stuff/Assets/Platforms for Insanity.png")
+	if world.score > 70 and world.score < 110: sprite.texture = load("res://Game Stuff/Assets/Platforms for Insanity.png")
 	else: sprite.texture = load("res://Game Stuff/Assets/Platforms for Insanity (1).png")
