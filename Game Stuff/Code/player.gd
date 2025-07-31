@@ -29,7 +29,7 @@ var scream_type = "death"
 func _ready() -> void:
 	ani.play("Idle")
 	turn_on_wide_collision()
-	if world.score > 51 and world.score < 56:
+	if world.score > 50 and world.score < 56:
 		if scream_type != "yay":
 			scream_type = "yay"
 			audio.volume_db = 0.0
