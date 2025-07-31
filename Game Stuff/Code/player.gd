@@ -47,8 +47,8 @@ func _ready() -> void:
 			scream_type = "death"
 			audio.volume_db = 20.0
 			audio.stream = load("res://Game Stuff/Sound/Sound Effects/scream-85294.mp3")
-	if world.score > 71 and world.score < 100: sword.visible = true
-	else: sword.visible = false	
+	if world.score > 71 and world.score < 100:$Sprite2D.texture = load("res://Game Stuff/Assets/Player with sword for Insanity sprite sheet.png")
+	else:  $Sprite2D.texture = load("res://Game Stuff/Assets/Player for Insanity  Sprite Sheet.png")
 
 
 func _physics_process(delta: float) -> void:
@@ -88,11 +88,11 @@ func _physics_process(delta: float) -> void:
 		
 		if world.score > 71 and world.score < 100:
 			if fake_world.side == "left" and dragons1.position.y > -100:
-				if global_position.x < 0: world.dragons_slayed += 1
+				if global_position.x < 0: world.dragons_slayed += 3
 				fake_world.hide_dragons()
 				pop.play()
 			elif fake_world.side == "right" and dragons2.position.y > -100:
-				if global_position.x > 0: world.dragons_slayed += 1
+				if global_position.x > 0: world.dragons_slayed += 3
 				fake_world.hide_dragons()
 				pop.play()
 		

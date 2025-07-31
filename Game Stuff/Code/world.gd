@@ -35,14 +35,14 @@ func _ready() -> void:
 	randomize()
 	
 func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed("delete"):
+		if has_node("Fake_world"): get_node("Fake_world").queue_free()
 	if Input.is_action_pressed("reset"):
 		if has_node("Fake_world"): get_node("Fake_world").queue_free()
 		await get_tree().process_frame
-		if has_node("Fake_world"): get_node("Fake_world").queue_free()
-		else:
-			score = 0#70#0
-			save_score()
-			reset()
+		score = 90#70#0
+		save_score()
+		reset()
 		
 		
 		
@@ -135,9 +135,10 @@ func _physics_process(delta: float) -> void:
 			Narrator.text = "BRAVE KNIGHT! Dragons are storming the castle! Defeat them before they inflate!!"
 		elif  score <= 76:
 			Narrator.text = "Listen, the inflatable dragons were on sale! Stop questioning me, you'll miss the dragons!"
-		elif  score <= 80:
+		elif  score <= 99:
 			Narrator.text = "Make sure to HOLD DOWN so that you can slice through the dragons as fast as possible."
-
+		elif  score == 100:
+			Narrator.text = "Nice job! You slew %d dragons!" % dragons_slayed
 
 
 
