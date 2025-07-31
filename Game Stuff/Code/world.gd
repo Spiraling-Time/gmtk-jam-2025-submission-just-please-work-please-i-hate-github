@@ -40,7 +40,7 @@ func _physics_process(delta: float) -> void:
 		await get_tree().process_frame
 		if has_node("Fake_world"): get_node("Fake_world").queue_free()
 		else:
-			score = 70#0
+			score = 0#70#0
 			save_score()
 			reset()
 		
