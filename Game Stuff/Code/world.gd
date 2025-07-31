@@ -43,8 +43,8 @@ func _physics_process(delta: float) -> void:
 		youhere.visible = false
 	
 	if score > 70 and score < 100:
-		if music_type != "GLORIUS":
-			music_type = "GLORIUS"
+		if music_type != "GLORIOUS":
+			music_type = "GLORIOUS"
 			audio.stream = load("res://Game Stuff/Sound/Music/medieval-kingdom-loop-366815.mp3")
 			audio.volume_db = -10.0
 			audio.play()
