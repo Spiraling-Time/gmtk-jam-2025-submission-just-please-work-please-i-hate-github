@@ -38,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	
 	if score > 57 and score < 69:
 		youhere.visible = true
-		distancetext.text = "%d" % youhere.global_position.x
+		distancetext.text = "%d" % abs(youhere.global_position.x)
 	else:
 		youhere.visible = false
 	
