@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cc3sj40rr8jua" path="res://Game Stuff/Code/player.gd" id="1_2wu1o"]
 [ext_resource type="Texture2D" uid="uid://kpwpfq5mu55l" path="res://Game Stuff/Assets/Player for Insanity  Sprite Sheet.png" id="1_c7pp4"]
 [ext_resource type="AudioStream" uid="uid://b8e6ee7bvvp2c" path="res://Game Stuff/Sound/Sound Effects/scream-85294.mp3" id="2_1ln5t"]
-[ext_resource type="AudioStream" uid="uid://58guqtsv8k50" path="res://Game Stuff/Sound/Sound Effects/grunt-106134.mp3" id="3_2emqr"]
+[ext_resource type="AudioStream" uid="uid://58guqtsv8k50" path="res://Game Stuff/Sound/Sound Effects/jump.mp3" id="3_2emqr"]
 
 [sub_resource type="Animation" id="Animation_yowue"]
 resource_name = "Fall"

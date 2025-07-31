@@ -24,9 +24,23 @@ var jump_height = 340
 
 var far_enough: bool = false
 
+var scream_type = "death"
+
 func _ready() -> void:
 	ani.play("Idle")
 	turn_on_wide_collision()
+	if world.score > 51 and world.score < 56:
+		if scream_type != "yay":
+			scream_type = "yay"
+			audio.volume_db = 0.0
+			audio.stream = load("res://Game Stuff/Sound/Sound Effects/yay-6326.mp3")
+	else:
+		if scream_type != "death":
+			scream_type = "death"
+			audio.volume_db = 20.0
+			audio.stream = load("res://Game Stuff/Sound/Sound Effects/scream-85294.mp3")
+			
+
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("left"):

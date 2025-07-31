@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://decvq8cfxi5ll"]
+[gd_scene load_steps=6 format=3 uid="uid://decvq8cfxi5ll"]
 
 [ext_resource type="Script" uid="uid://b08bw2a4vpdep" path="res://Game Stuff/Code/world.gd" id="1_1xivv"]
 [ext_resource type="AudioStream" uid="uid://drxjlmnvrk73q" path="res://Game Stuff/Sound/Music/birds-chirping-calm-173695.mp3" id="2_51hl3"]
@@ -7,6 +7,11 @@
 [sub_resource type="LabelSettings" id="LabelSettings_a1w2j"]
 font_size = 100
 outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_f87rk"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
 outline_color = Color(0, 0, 0, 1)
 
 [node name="World" type="Node2D"]
@@ -19,7 +24,7 @@ stream = ExtResource("2_51hl3")
 
 [node name="Wall" type="ColorRect" parent="CanvasLayer"]
 offset_right = 1920.0
-offset_bottom = 200.0
+offset_bottom = 150.0
 
 [node name="Scorer" type="Label" parent="CanvasLayer"]
 z_index = 2
@@ -29,9 +34,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -28.5
-offset_top = -525.0
+offset_top = -375.0
 offset_right = 28.5
-offset_bottom = -248.0
+offset_bottom = -98.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "
@@ -40,12 +45,15 @@ label_settings = SubResource("LabelSettings_a1w2j")
 
 [node name="Icon1" type="Sprite2D" parent="CanvasLayer"]
 visible = false
-position = Vector2(817, 88)
+position = Vector2(830, 238)
 texture = ExtResource("3_f87rk")
 
 [node name="Narrator" type="Label" parent="CanvasLayer"]
 z_index = 1
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 1921.0
+offset_bottom = 150.0
+label_settings = SubResource("LabelSettings_f87rk")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="finished" from="Background music" to="." method="_on_background_music_finished"]
