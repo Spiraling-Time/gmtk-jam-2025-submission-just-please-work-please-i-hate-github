@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bs27ymhuprb2r"]
+[gd_scene load_steps=5 format=3 uid="uid://bs27ymhuprb2r"]
 
 [ext_resource type="PackedScene" uid="uid://dwufl6h30f5bb" path="res://Game Stuff/Scenes/player.tscn" id="1_48msu"]
 [ext_resource type="Script" uid="uid://dd1puptpukoyf" path="res://Game Stuff/Code/fake_world.gd" id="1_yoqo4"]
 [ext_resource type="PackedScene" uid="uid://cnygutb8lvw0i" path="res://Game Stuff/Scenes/platform.tscn" id="2_yoqo4"]
+[ext_resource type="Texture2D" uid="uid://csif1ldi6ku8i" path="res://Game Stuff/Assets/Dragon for Insanity.png" id="4_k0g02"]
 
 [node name="Fake_world" type="Node2D"]
 script = ExtResource("1_yoqo4")
@@ -23,6 +24,39 @@ position = Vector2(-1378, 443)
 
 [node name="Platform3" parent="." instance=ExtResource("2_yoqo4")]
 position = Vector2(1378, 443)
+
+[node name="Dragons1" type="Node2D" parent="."]
+visible = false
+z_index = 3
+position = Vector2(-689, 443)
+
+[node name="dragon1" type="Sprite2D" parent="Dragons1"]
+texture = ExtResource("4_k0g02")
+
+[node name="dragon2" type="Sprite2D" parent="Dragons1"]
+position = Vector2(-300, 0)
+texture = ExtResource("4_k0g02")
+
+[node name="dragon3" type="Sprite2D" parent="Dragons1"]
+position = Vector2(300, 0)
+texture = ExtResource("4_k0g02")
+
+[node name="Dragons2" type="Node2D" parent="."]
+visible = false
+z_index = 3
+position = Vector2(689, 443)
+scale = Vector2(-1, 1)
+
+[node name="dragon1" type="Sprite2D" parent="Dragons2"]
+texture = ExtResource("4_k0g02")
+
+[node name="dragon2" type="Sprite2D" parent="Dragons2"]
+position = Vector2(-300, 0)
+texture = ExtResource("4_k0g02")
+
+[node name="dragon3" type="Sprite2D" parent="Dragons2"]
+position = Vector2(300, 0)
+texture = ExtResource("4_k0g02")
 
 [connection signal="finished" from="Player/death_scream" to="." method="_on_death_scream_finished"]
 

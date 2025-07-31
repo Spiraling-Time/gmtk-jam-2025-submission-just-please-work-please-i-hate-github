@@ -23,6 +23,7 @@ script = ExtResource("1_1xivv")
 stream = ExtResource("2_51hl3")
 
 [node name="you got here" type="Sprite2D" parent="."]
+visible = false
 z_index = 2
 position = Vector2(809, 106)
 texture = ExtResource("3_1xivv")

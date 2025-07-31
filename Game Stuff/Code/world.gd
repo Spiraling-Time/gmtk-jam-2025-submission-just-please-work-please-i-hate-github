@@ -27,20 +27,32 @@ func _ready() -> void:
 	load_data_score()
 	reset()
 	Narrator.text = " "
+	randomize()
 	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("reset"):
-		score = 57#0
+		score = 68#0
 		save_score()
 		reset()
 		
 	so_called_score.text = "%d" % score
 	
-	if score > 57 and score < 69:
+	if score > 57 and score < 71:
 		youhere.visible = true
 		distancetext.text = "%d" % abs(youhere.global_position.x)
 	else:
 		youhere.visible = false
+	
+	
+	if score >= 20 and score <= 51:
+		Icon1.texture = load("res://Game Stuff/Assets/Skull for Insanity.png")
+		Icon1.visible = true
+	elif score >= 52 and score <= 55:
+		Icon1.texture = load("res://Game Stuff/Assets/Cool Diving for Insanity.png")
+		Icon1.visible = true
+	
+	else:
+		Icon1.visible = false
 	
 	if score > 70 and score < 100:
 		if music_type != "GLORIOUS":
@@ -62,62 +74,33 @@ func _physics_process(delta: float) -> void:
 			Narrator.text = "Oh, I'm late! Sorry, sorry, you must be terribly confused!"
 		elif score <= 20:
 			Narrator.text = "Oh my, you certainly have been busy. You died %d times!" % score
-			Icon1.texture = load("res://Game Stuff/Assets/Skull for Insanity.png")
-			Icon1.visible = true
 		elif  score <= 23:
 			Narrator.text = "Well, don't let me stop you! I'm sure whatever you are doing is very important."
-			Icon1.texture = load("res://Game Stuff/Assets/Skull for Insanity.png")
-			Icon1.visible = true
 		elif  score == 24:
 			Narrator.text = ""
-			Icon1.texture = load("res://Game Stuff/Assets/Skull for Insanity.png")
-			Icon1.visible = true
 		elif  score == 25:
 			Narrator.text = "..."
-			Icon1.texture = load("res://Game Stuff/Assets/Skull for Insanity.png")
-			Icon1.visible = true
 		elif  score <= 28:
 			Narrator.text = "Are you trying to reach another platform? You keep missing it."
-			Icon1.texture = load("res://Game Stuff/Assets/Skull for Insanity.png")
-			Icon1.visible = true
 		elif  score <= 30:
 			Narrator.text = "Maybe try a running start?"
-			Icon1.texture = load("res://Game Stuff/Assets/Skull for Insanity.png")
-			Icon1.visible = true
 		elif  score <= 32:
 			Narrator.text = "Oh, nevermind."
-			Icon1.texture = load("res://Game Stuff/Assets/Skull for Insanity.png")
-			Icon1.visible = true
 		elif  score <= 36:
 			Narrator.text = ""
-			Icon1.texture = load("res://Game Stuff/Assets/Skull for Insanity.png")
-			Icon1.visible = true
 		elif  score <= 38:
 			Narrator.text = "Oh! I got it! You're trying to fall!"
-			Icon1.texture = load("res://Game Stuff/Assets/Skull for Insanity.png")
-			Icon1.visible = true
 		elif  score <= 48:
 			Narrator.text = "You are very good at falling."
-			Icon1.texture = load("res://Game Stuff/Assets/Skull for Insanity.png")
-			Icon1.visible = true
 		elif  score <= 50:
 			Narrator.text = "Oh! You aren't dying, you are diving! You're a sky diver!"
-			Icon1.texture = load("res://Game Stuff/Assets/Skull for Insanity.png")
-			Icon1.visible = true
 		elif  score <= 51:
 			Narrator.text = "Let me adjust that, and move that there..."
-			Icon1.texture = load("res://Game Stuff/Assets/Skull for Insanity.png")
-			Icon1.visible = true
 		elif  score <= 52:
-			Icon1.texture = load("res://Game Stuff/Assets/Cool Diving for Insanity.png")
-			Icon1.visible = true
 			Narrator.text = "Perfect!"
 		elif  score <= 55:
-			Icon1.texture = load("res://Game Stuff/Assets/Cool Diving for Insanity.png")
-			Icon1.visible = true
 			Narrator.text = "What do you think?"
 		elif  score <= 56:
-			Icon1.visible = false
 			Narrator.text = "No, that doesn't fit either!"
 		elif  score <= 58:
 			Narrator.text = "Wait! I have an idea! I'll be right back. While you wait, see how far you can get!"
@@ -125,7 +108,8 @@ func _physics_process(delta: float) -> void:
 			Narrator.text = ""
 		elif  score <= 71:
 			Narrator.text = "TA-DAAAA!!!"
-			
+		elif  score <= 72:
+			Narrator.text = "BRAVE KNIGHT! Dragons are storming the castle! Defeat them as fast as possible!"
 
 
 
