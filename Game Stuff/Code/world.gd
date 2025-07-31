@@ -15,6 +15,9 @@ var score = 0
 @onready var youhere = $"you got here"
 @onready var distancetext = $"you got here/distance"
 
+@onready var basic_label = $CanvasLayer/Icon1/Label
+
+var dragons_slayed = 0
 
 var fake_world = preload("res://Game Stuff/Scenes/fake_world.tscn")
 
@@ -43,6 +46,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		youhere.visible = false
 	
+	if score > 71 and score < 100:
+		basic_label.text = "%d" % dragons_slayed
 	
 	if score >= 20 and score <= 51:
 		Icon1.texture = load("res://Game Stuff/Assets/Skull for Insanity.png")
@@ -50,7 +55,12 @@ func _physics_process(delta: float) -> void:
 	elif score >= 52 and score <= 55:
 		Icon1.texture = load("res://Game Stuff/Assets/Cool Diving for Insanity.png")
 		Icon1.visible = true
-	
+	elif score > 71 and score < 80:
+		Icon1.texture = load("res://Game Stuff/Assets/Dragon Head for Insanity.png")
+		Icon1.visible = true
+	elif score > 80 and score < 100:
+		Icon1.texture = load("res://Game Stuff/Assets/Dragon Head for Insanity (1).png")
+		Icon1.visible = true
 	else:
 		Icon1.visible = false
 	
