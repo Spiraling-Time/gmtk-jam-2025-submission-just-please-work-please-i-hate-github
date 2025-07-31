@@ -1,11 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://decvq8cfxi5ll"]
+[gd_scene load_steps=4 format=3 uid="uid://decvq8cfxi5ll"]
 
 [ext_resource type="Script" uid="uid://b08bw2a4vpdep" path="res://Game Stuff/Code/world.gd" id="1_1xivv"]
-[ext_resource type="PackedScene" uid="uid://dwufl6h30f5bb" path="res://Game Stuff/Scenes/player.tscn" id="1_a1w2j"]
 [ext_resource type="AudioStream" uid="uid://drxjlmnvrk73q" path="res://Game Stuff/Sound/Music/birds-chirping-calm-173695.mp3" id="2_51hl3"]
-[ext_resource type="PackedScene" uid="uid://cnygutb8lvw0i" path="res://Game Stuff/Scenes/platform.tscn" id="2_f87rk"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_1xivv"]
+[sub_resource type="LabelSettings" id="LabelSettings_a1w2j"]
 font_size = 100
 outline_size = 15
 outline_color = Color(0, 0, 0, 1)
@@ -13,9 +11,12 @@ outline_color = Color(0, 0, 0, 1)
 [node name="World" type="Node2D"]
 script = ExtResource("1_1xivv")
 
+[node name="Background music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_51hl3")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Scorer" type="Label" parent="CanvasLayer"]
 z_index = 2
 anchors_preset = 8
 anchor_left = 0.5
@@ -30,26 +31,10 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "
 "
-label_settings = SubResource("LabelSettings_1xivv")
+label_settings = SubResource("LabelSettings_a1w2j")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_51hl3")
+[node name="Narrator" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
 
-[node name="Player" parent="." instance=ExtResource("1_a1w2j")]
-z_index = 1
-position = Vector2(0, -909)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-limit_top = -700
-limit_bottom = 360
-
-[node name="Platform" parent="." instance=ExtResource("2_f87rk")]
-position = Vector2(0, 443)
-
-[node name="Platform2" parent="." instance=ExtResource("2_f87rk")]
-position = Vector2(-1378, 443)
-
-[node name="Platform3" parent="." instance=ExtResource("2_f87rk")]
-position = Vector2(1378, 443)
-
-[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
+[connection signal="finished" from="Background music" to="." method="_on_background_music_finished"]

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@onready var world = $".."
-
+@onready var world = $"../.."
+@onready var fake_world = $".."
 
 @onready var ani = $animationplayer
 @onready var sprite = $Sprite2D
@@ -12,7 +12,7 @@ extends CharacterBody2D
 @onready var skinny_collision = $Idle_collision_shape
 @onready var skinny_stand_collision = $"Touching ground/Idle_collision_shape"
 
-@onready var audio = $AudioStreamPlayer2D
+@onready var audio = $death_scream
 
 @onready var jump = $jump
 
@@ -29,7 +29,6 @@ func _ready() -> void:
 	turn_on_wide_collision()
 
 func _physics_process(delta: float) -> void:
-	print(global_position.y)
 	if Input.is_action_pressed("left"):
 		sprite.flip_h = false
 		if touching_ground.get_overlapping_bodies().size() != 0: ani.play("Run")
@@ -82,8 +81,3 @@ func turn_on_skinny_collision():
 	if skinny_stand_collision.disabled:	skinny_stand_collision.disabled = false
 	if !wide_collision.disabled: wide_collision.disabled = true
 	if !wide_stand_collision.disabled: wide_stand_collision.disabled = true
-
-
-func _on_audio_stream_player_2d_finished() -> void:
-
-	get_tree().reload_current_scene()

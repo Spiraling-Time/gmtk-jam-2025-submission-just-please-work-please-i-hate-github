@@ -2,22 +2,25 @@ extends Node2D
 
 var save_path_score = "user://variable.score"
 
-var saved_score = 0
 
 var score = 0
 
-@onready var audio = $AudioStreamPlayer2D
-@onready var so_called_score = $CanvasLayer/Label
+@onready var audio = $"Background music"
+@onready var so_called_score = $CanvasLayer/Scorer
+@onready var Narrator = $CanvasLayer/Narrator
 
+
+
+var fake_world = preload("res://Game Stuff/Scenes/fake_world.tscn")
 
 func _ready() -> void:
 	audio.play()
 	#save_score()
 	load_data_score()
-	score = saved_score
+	reset()
+	
 
-func _on_audio_stream_player_2d_finished() -> void:
-	audio.play()
+
 
 func save_score():
 	var file = FileAccess.open(save_path_score, FileAccess.WRITE)
@@ -27,7 +30,16 @@ func save_score():
 func load_data_score():
 	if FileAccess.file_exists(save_path_score):
 		var file = FileAccess.open(save_path_score, FileAccess.READ)
-		saved_score = file.get_var()
+		score = file.get_var()
 
 func _physics_process(delta: float) -> void:
 	so_called_score.text = "%d" % score
+
+func reset():
+	await get_tree().process_frame
+	add_child(fake_world.instantiate())
+	
+
+
+func _on_background_music_finished() -> void:
+	audio.play()

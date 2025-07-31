@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs27ymhuprb2r"]
+
+[ext_resource type="PackedScene" uid="uid://dwufl6h30f5bb" path="res://Game Stuff/Scenes/player.tscn" id="1_48msu"]
+[ext_resource type="Script" uid="uid://dd1puptpukoyf" path="res://Game Stuff/Code/fake_world.gd" id="1_yoqo4"]
+[ext_resource type="PackedScene" uid="uid://cnygutb8lvw0i" path="res://Game Stuff/Scenes/platform.tscn" id="2_yoqo4"]
+
+[node name="Fake_world" type="Node2D"]
+script = ExtResource("1_yoqo4")
+
+[node name="Player" parent="." instance=ExtResource("1_48msu")]
+z_index = 1
+position = Vector2(0, -909)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_top = -700
+limit_bottom = 360
+
+[node name="Platform" parent="." instance=ExtResource("2_yoqo4")]
+position = Vector2(0, 443)
+
+[node name="Platform2" parent="." instance=ExtResource("2_yoqo4")]
+position = Vector2(-1378, 443)
+
+[node name="Platform3" parent="." instance=ExtResource("2_yoqo4")]
+position = Vector2(1378, 443)
+
+[connection signal="finished" from="Player/death_scream" to="." method="_on_death_scream_finished"]
+
+[editable path="Player"]
