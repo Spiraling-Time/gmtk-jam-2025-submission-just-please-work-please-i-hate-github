@@ -1,17 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://decvq8cfxi5ll"]
+[gd_scene load_steps=7 format=3 uid="uid://decvq8cfxi5ll"]
 
 [ext_resource type="Script" uid="uid://b08bw2a4vpdep" path="res://Game Stuff/Code/world.gd" id="1_1xivv"]
 [ext_resource type="AudioStream" uid="uid://drxjlmnvrk73q" path="res://Game Stuff/Sound/Music/birds-chirping-calm-173695.mp3" id="2_51hl3"]
+[ext_resource type="Texture2D" uid="uid://8q1l4ben6m4a" path="res://Game Stuff/Assets/HERE for Insanity.png" id="3_1xivv"]
 [ext_resource type="Texture2D" uid="uid://b77a3t115an1u" path="res://Game Stuff/Assets/Skull for Insanity.png" id="3_f87rk"]
+[ext_resource type="LabelSettings" uid="uid://bxnwsfvjb6cao" path="res://Game Stuff/Scenes/small_font.tres" id="4_51hl3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_a1w2j"]
 font_size = 100
 outline_size = 15
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_f87rk"]
-font_size = 50
-font_color = Color(0, 0, 0, 1)
 outline_color = Color(0, 0, 0, 1)
 
 [node name="World" type="Node2D"]
@@ -19,6 +16,27 @@ script = ExtResource("1_1xivv")
 
 [node name="Background music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_51hl3")
+
+[node name="you got here" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(809, 106)
+texture = ExtResource("3_1xivv")
+
+[node name="distance" type="Label" parent="you got here"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -281.5
+offset_right = -460.0
+offset_bottom = -258.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = ExtResource("4_51hl3")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -52,7 +70,7 @@ texture = ExtResource("3_f87rk")
 z_index = 1
 offset_right = 1921.0
 offset_bottom = 150.0
-label_settings = SubResource("LabelSettings_f87rk")
+label_settings = ExtResource("4_51hl3")
 horizontal_alignment = 1
 vertical_alignment = 1
 

@@ -75,6 +75,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	if global_position.y >= 200.0 and !audio.playing:
+		world.youhere.global_position = global_position
+		
 		audio.play()
 	
 	

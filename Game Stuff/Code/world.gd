@@ -12,9 +12,13 @@ var score = 0
 @onready var so_called_score = $CanvasLayer/Scorer
 @onready var Narrator = $CanvasLayer/Narrator
 @onready var Icon1 = $CanvasLayer/Icon1
+@onready var youhere = $"you got here"
+@onready var distancetext = $"you got here/distance"
 
 
 var fake_world = preload("res://Game Stuff/Scenes/fake_world.tscn")
+
+var music_type = "calm"
 
 func _ready() -> void:
 	#save_score()
@@ -26,11 +30,33 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("reset"):
-		score = 51#0
+		score = 57#0
 		save_score()
 		reset()
 		
 	so_called_score.text = "%d" % score
+	
+	if score > 57 and score < 69:
+		youhere.visible = true
+		distancetext.text = "%d" % youhere.global_position.x
+	else:
+		youhere.visible = false
+	
+	if score > 70 and score < 100:
+		if music_type != "GLORIUS":
+			music_type = "GLORIUS"
+			audio.stream = load("res://Game Stuff/Sound/Music/medieval-kingdom-loop-366815.mp3")
+			audio.volume_db = -10.0
+			audio.play()
+	else:
+		if music_type != "calm":
+			music_type = "calm"
+			audio.stream = load("res://Game Stuff/Sound/Music/birds-chirping-calm-173695.mp3")
+			audio.volume_db = 0
+			audio.play()
+	
+	
+	
 	if score > 9:
 		if score <= 19:
 			Narrator.text = "Oh, I'm late! Sorry, sorry, you must be terribly confused!"
@@ -90,6 +116,22 @@ func _physics_process(delta: float) -> void:
 			Icon1.texture = load("res://Game Stuff/Assets/Cool Diving for Insanity.png")
 			Icon1.visible = true
 			Narrator.text = "What do you think?"
+		elif  score <= 56:
+			Icon1.visible = false
+			Narrator.text = "No, that doesn't fit either!"
+		elif  score <= 58:
+			Narrator.text = "Wait! I have an idea! I'll be right back. While you wait, see how far you can get!"
+		elif  score <= 70:
+			Narrator.text = ""
+		elif  score <= 71:
+			Narrator.text = "TA-DAAAA!!!"
+			
+
+
+
+
+
+
 
 func save_score():
 	var file = FileAccess.open(save_path_score, FileAccess.WRITE)
@@ -114,6 +156,7 @@ func load_data_screams():
 
 
 func reset():
+	await get_tree().process_frame
 	if has_node("Fake_world"): get_node("Fake_world").queue_free()
 	await get_tree().process_frame
 	add_child(fake_world.instantiate())
