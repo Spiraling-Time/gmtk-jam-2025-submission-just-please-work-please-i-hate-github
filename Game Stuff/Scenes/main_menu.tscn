@@ -1,3 +1,63 @@
-[gd_scene format=3 uid="uid://7o2nht35wcfc"]
+[gd_scene load_steps=3 format=3 uid="uid://7o2nht35wcfc"]
+
+[ext_resource type="Script" uid="uid://f0f13atumfvy" path="res://Game Stuff/Code/main_menu.gd" id="1_ffijb"]
+[ext_resource type="Texture2D" uid="uid://2ek2b1jssgwr" path="res://Game Stuff/Assets/Main Menu stuff for Insanity Sprite Sheet.png" id="1_vu02h"]
 
 [node name="Main Menu" type="Node2D"]
+script = ExtResource("1_ffijb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vu02h")
+vframes = 5
+
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="Level Select" type="Button" parent="Buttons"]
+offset_left = -121.0
+offset_top = 123.0
+offset_right = 121.0
+offset_bottom = 255.0
+focus_mode = 0
+flat = true
+
+[node name="Controls" type="Button" parent="Buttons"]
+offset_left = -121.0
+offset_top = -254.0
+offset_right = 121.0
+offset_bottom = -122.0
+focus_mode = 0
+flat = true
+
+[node name="Begin" type="Button" parent="Buttons"]
+offset_left = -121.0
+offset_top = -66.0
+offset_right = 121.0
+offset_bottom = 66.0
+focus_mode = 0
+flat = true
+
+[node name="Credits" type="Button" parent="Buttons"]
+offset_left = -121.0
+offset_top = 310.0
+offset_right = 121.0
+offset_bottom = 442.0
+focus_mode = 0
+flat = true
+
+[node name="Exit" type="Button" parent="."]
+visible = false
+z_index = 1
+offset_left = -483.0
+offset_top = -261.0
+offset_right = 482.0
+offset_bottom = 261.0
+focus_mode = 0
+flat = true
+
+[connection signal="pressed" from="Buttons/Level Select" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="Buttons/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="Buttons/Begin" to="." method="_on_begin_pressed"]
+[connection signal="pressed" from="Buttons/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]

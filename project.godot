@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GMTK JAM 2025 submission just please work please I HATE GITHUB"
-run/main_scene="uid://decvq8cfxi5ll"
+run/main_scene="uid://7o2nht35wcfc"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
