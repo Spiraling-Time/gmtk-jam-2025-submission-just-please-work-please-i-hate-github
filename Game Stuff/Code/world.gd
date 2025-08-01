@@ -92,13 +92,11 @@ func _physics_process(delta: float) -> void:
 		if music_type != "GLORIOUS":
 			music_type = "GLORIOUS"
 			audio.stream = load("res://Game Stuff/Sound/Music/medieval-kingdom-loop-366815.mp3")
-			audio.volume_db = -5.0
 			audio.play()
 	else:
 		if music_type != "calm":
 			music_type = "calm"
 			audio.stream = load("res://Game Stuff/Sound/Music/birds-chirping-calm-173695.mp3")
-			audio.volume_db = 0
 			audio.play()
 	
 	

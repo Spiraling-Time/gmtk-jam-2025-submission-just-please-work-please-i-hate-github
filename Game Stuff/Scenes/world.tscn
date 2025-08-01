@@ -23,6 +23,7 @@ script = ExtResource("1_1xivv")
 
 [node name="Background music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_51hl3")
+volume_db = 5.0
 
 [node name="you got here" type="Sprite2D" parent="."]
 visible = false
