@@ -55,6 +55,7 @@ func _ready() -> void:
 	reset()
 	Narrator.text = " "
 	randomize()
+	print(screams)
 	
 func _physics_process(delta: float) -> void:
 	so_called_score.text = "%d" % score
@@ -171,7 +172,7 @@ func _physics_process(delta: float) -> void:
 				voice.stop()
 				voice.play()
 		elif  score <= 48:
-			"Oh! You aren't dying, you are diving! You're a sky diver!"
+			Narrator.text = "Oh! You aren't dying, you are diving! You're a sky diver!"
 			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 010.mp3")
 			if voice.stream != current_recording:
 				voice.stream = current_recording
