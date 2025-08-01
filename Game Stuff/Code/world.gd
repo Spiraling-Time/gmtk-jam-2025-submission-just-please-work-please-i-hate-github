@@ -179,7 +179,7 @@ func _physics_process(delta: float) -> void:
 		elif  score <= 139:
 			Narrator.text = "Or really, thats everything. Make your own goals! (And head to the main menu if you want any of the modifiers present in the game)."
 		elif  score <= 141:
-			Narrator.text = "Enjoy!"
+			Narrator.text = "Can you yell in sync with your character?"
 		elif  score <= 200:
 			Narrator.text = ""
 		elif  score <= 300:
