@@ -48,11 +48,11 @@ func _physics_process(delta: float) -> void:
 	
 	
 
-	if Input.is_action_just_pressed("restart_world"):
-		Narrator.text = ""
-		score = 0
-		save_score()
-		reset()
+	#if Input.is_action_just_pressed("restart_world"):
+		#Narrator.text = ""
+		#score = 0
+		#save_score()
+		#reset()
 		
 		
 		
@@ -163,7 +163,7 @@ func _physics_process(delta: float) -> void:
 		elif  score <= 123:
 			Narrator.text = "You did the same thing over, and over, and over, and the only thing that changed was how you viewed it."
 		elif  score <= 125:
-			Narrator.text = "When something happens over and over, it is NOT insane to expect something new. Even if nothing objectively changed, your perspective can change."
+			Narrator.text = "When something keeps occurring, it is NOT insane to expect something new. Even if nothing objectively changes, your perspective can change."
 		elif  score <= 127:
 			Narrator.text = "You do something 100 times, hear something 100 times, see something 100 times, and you could find something new."
 		elif  score <= 129:
@@ -192,10 +192,13 @@ func _physics_process(delta: float) -> void:
 			Narrator.text = "Comment an idea for a modifier to how the game looks and your favorite food. I'll check back and add in a few I like!"
 		elif  score <= 600:
 			Narrator.text = "Go touch grass."
-		elif  score <= 700:
+		elif  score <= 750:
 			Narrator.text = "Bye. I'm glad you are this invested, but I have stuff to do."
-		elif  score >= 750:
-			Narrator.text = ""
+		elif  score <= 1000:
+			Narrator.text = "I said I have to go! Good day, sir!"
+		elif  score > 1000:
+			Narrator.text = "I'm not actually British."
+
 
 
 func save_score():
