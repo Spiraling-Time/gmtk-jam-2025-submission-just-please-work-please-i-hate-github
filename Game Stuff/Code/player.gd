@@ -38,7 +38,7 @@ var resetting:bool = false
 func _ready() -> void:
 	ani.play("Idle")
 	turn_on_wide_collision()
-	if world.score > 50 and world.score < 56:
+	if (world.score > 49 and world.score < 56) or world.death_scream_mode:
 		if scream_type != "yay":
 			scream_type = "yay"
 			audio.volume_db = 0.0
@@ -48,7 +48,7 @@ func _ready() -> void:
 			scream_type = "death"
 			audio.volume_db = 20.0
 			audio.stream = load("res://Game Stuff/Sound/Sound Effects/scream-85294.mp3")
-	if world.score > 71 and world.score < 110:$Sprite2D.texture = load("res://Game Stuff/Assets/Player with sword for Insanity sprite sheet.png")
+	if (world.score > 71 and world.score < 110) or world.main_mode == "GLORY":$Sprite2D.texture = load("res://Game Stuff/Assets/Player with sword for Insanity sprite sheet.png")
 	else:  $Sprite2D.texture = load("res://Game Stuff/Assets/Player for Insanity  Sprite Sheet.png")
 
 
@@ -91,7 +91,7 @@ func _physics_process(delta: float) -> void:
 		audio.play()
 		world.youhere.global_position = global_position
 		
-		if world.score > 71 and world.score < 110:
+		if (world.score > 71 and world.score < 110) or world.main_mode == "GLORY":
 			if fake_world.side == "left" and dragons1.position.y > -100:
 				if global_position.x < 0: world.dragons_slayed += 3
 				fake_world.hide_dragons()

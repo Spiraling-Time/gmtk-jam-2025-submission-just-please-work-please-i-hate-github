@@ -2,6 +2,9 @@ extends Node2D
 
 var save_path_screams = "user://variable.screams"
 
+var save_path_locked = "user://variable.locked"
+var locked: bool = true
+
 
 var save_path_score = "user://variable.score"
 
@@ -29,8 +32,18 @@ var music_type = "calm"
 
 var exit = 0
 
+@onready var type_here = $CanvasLayer/LineEdit
+
+var typed_level = 0
+
+
+var main_mode = "Normal"
+var icon_mode = "Normal"
+var distance_mode:bool = false
+var death_scream_mode: bool = false
 
 func _ready() -> void:
+	load_data_locked()
 	#save_score()
 	load_data_screams()
 	audio.play()
@@ -40,32 +53,15 @@ func _ready() -> void:
 	randomize()
 	
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("exit"):
-		exit += 1
-		if exit >= 50:
-			get_tree().change_scene_to_file("res://Game Stuff/Scenes/main_menu.tscn")
-	else: exit = 0
-	
-	
-
-	#if Input.is_action_just_pressed("restart_world"):
-		#Narrator.text = ""
-		#score = 0
-		#save_score()
-		#reset()
-		
-		
-		
 	so_called_score.text = "%d" % score
-	
-	
-	if score > 57 and score < 71:
+
+	if (score > 57 and score < 71) or distance_mode:
 		if youhere.global_position != Vector2.ZERO:
 			youhere.visible = true
 			distancetext.text = "%d" % abs(youhere.global_position.x)
 	else: youhere.visible = false
 	
-	if score > 71 and score < 110:
+	if (score > 71 and score < 110) or main_mode == "GLORY":
 		basic_label.text = "%d" % dragons_slayed
 		swordthingie.visible = true
 	else: 
@@ -73,13 +69,13 @@ func _physics_process(delta: float) -> void:
 		swordthingie.visible = false
 	
 	
-	if score >= 20 and score <= 51:
+	if (score >= 20 and score <= 49) or icon_mode == "Skull":
 		Icon1.texture = load("res://Game Stuff/Assets/Skull for Insanity.png")
 		Icon1.visible = true
-	elif score >= 52 and score <= 55:
+	elif (score >= 50 and score <= 55) or icon_mode == "Arrow":
 		Icon1.texture = load("res://Game Stuff/Assets/Cool Diving for Insanity.png")
 		Icon1.visible = true
-	elif score > 71 and score < 80:
+	elif (score > 71 and score < 80) or icon_mode == "Dragon":
 		Icon1.texture = load("res://Game Stuff/Assets/Dragon Head for Insanity.png")
 		Icon1.visible = true
 	elif score >= 80 and score < 110:
@@ -88,7 +84,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		Icon1.visible = false
 	
-	if score > 70 and score < 110:
+	if (score > 70 and score < 110) or main_mode == "GLORY":
 		if music_type != "GLORIOUS":
 			music_type = "GLORIOUS"
 			audio.stream = load("res://Game Stuff/Sound/Music/medieval-kingdom-loop-366815.mp3")
@@ -119,16 +115,14 @@ func _physics_process(delta: float) -> void:
 		elif  score <= 32:
 			Narrator.text = "Oh, nevermind."
 		elif  score <= 36:
-			Narrator.text = ""
-		elif  score <= 38:
 			Narrator.text = "Oh! I got it! You're trying to fall!"
-		elif  score <= 48:
+		elif  score <= 38:
 			Narrator.text = "You are very good at falling."
-		elif  score <= 50:
-			Narrator.text = "Oh! You aren't dying, you are diving! You're a sky diver!"
-		elif  score <= 51:
+		elif  score <= 48:
+			"Oh! You aren't dying, you are diving! You're a sky diver!"
+		elif  score <= 49:
 			Narrator.text = "Let me adjust that, and move that there..."
-		elif  score <= 52:
+		elif  score <= 54:
 			Narrator.text = "Perfect!"
 		elif  score <= 55:
 			Narrator.text = "What do you think?"
@@ -173,7 +167,9 @@ func _physics_process(delta: float) -> void:
 		elif  score <= 135:
 			Narrator.text = "..."
 		elif  score <= 137:
-			Narrator.text = "Oh, you want more? Fine. Here's some bonus modes, and a level select. Go back to the main menu to unlock them (HOLD SPACE)."
+			Narrator.text = "Oh, you want more? Fine. Here's some toggles, and a level select. Go back to the main menu to unlock them (HOLD SPACE)."
+			locked = false
+			save_locked()
 		elif  score <= 139:
 			Narrator.text = "Thats it."
 		elif  score <= 139:
@@ -194,8 +190,57 @@ func _physics_process(delta: float) -> void:
 			Narrator.text = "Bye. I'm glad you are this invested, but I have stuff to do."
 		elif  score <= 1000:
 			Narrator.text = "I said I have to go! Good day, sir!"
-		elif  score > 1000:
+		elif  score == 1003:
 			Narrator.text = "I'm not actually British."
+
+	if !locked:
+		if Input.is_action_just_pressed("restart_world"):
+			type_here.visible = true
+			save_score()
+			reset()
+		if Input.is_action_just_pressed("toggle_death_icon"):
+			if icon_mode != "Skull": icon_mode = "Skull"
+			else: icon_mode = "Normal"
+			save_score()
+			reset()
+		if Input.is_action_just_pressed("toggle_arrow_and_joy"):
+			if icon_mode != "Arrow": icon_mode = "Arrow"
+			else: icon_mode = "Normal"
+			if !death_scream_mode: death_scream_mode = true
+			else: death_scream_mode = false
+			save_score()
+			reset()
+		if Input.is_action_just_pressed("toggle_distance_tracker"):
+			if !distance_mode: distance_mode = true
+			else: distance_mode = false
+			save_score()
+			reset()
+		if Input.is_action_just_pressed("toggle_dragons"):
+			if main_mode != "GLORY": main_mode = "GLORY"
+			else: main_mode = "Normal"
+			save_score()
+			reset()
+
+
+
+	if type_here.visible:
+		if type_here.text.is_valid_int():
+			var intform = int(type_here.text)
+			if intform >= 0: typed_level = intform
+		if Input.is_action_just_pressed("select"):
+			Narrator.text = ""
+			score = typed_level
+			save_score()
+			reset()
+			type_here.visible = false
+			
+	else:
+		if Input.is_action_pressed("exit"):
+			exit += 1
+			if exit >= 50:
+				get_tree().change_scene_to_file("res://Game Stuff/Scenes/main_menu.tscn")
+		else: exit = 0
+
 
 
 
@@ -236,5 +281,11 @@ func _on_background_music_finished() -> void:
 	audio.play()
 
 
+func save_locked():
+	var file = FileAccess.open(save_path_locked, FileAccess.WRITE)
+	file.store_var(locked)
 
-	
+func load_data_locked():
+	if FileAccess.file_exists(save_path_locked):
+		var file = FileAccess.open(save_path_locked, FileAccess.READ)
+		locked = file.get_var()

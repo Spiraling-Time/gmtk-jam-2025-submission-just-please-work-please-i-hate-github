@@ -14,7 +14,7 @@ func _on_death_scream_finished() -> void:
 	
 
 func _ready() -> void:
-	if world.score > 71 and world.score < 110:
+	if (world.score > 71 and world.score < 110) or world.main_mode == "GLORY":
 		dragons1.position = Vector2(-689.0, 443.0)
 		dragons2.position = Vector2(689.0, 443.0)
 		dragons1.scale = Vector2(1,1)
@@ -33,7 +33,7 @@ func _ready() -> void:
 		dragons2.visible = false
 
 func _physics_process(delta: float) -> void:
-	if world.score > 71 and world.score < 110:
+	if (world.score > 71 and world.score < 110) or world.main_mode == "GLORY":
 		if side == "left":
 			dragons1.position.y -= 7
 			if dragons1.position.y <= -100:
