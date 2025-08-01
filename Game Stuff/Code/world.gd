@@ -11,6 +11,8 @@ var save_path_score = "user://variable.score"
 var screams = 0
 var score = 0
 
+@onready var voice = $Narrating
+
 @onready var audio = $"Background music"
 @onready var so_called_score = $CanvasLayer/Scorer
 @onready var Narrator = $CanvasLayer/Narrator
@@ -42,6 +44,8 @@ var icon_mode = "Normal"
 var distance_mode:bool = false
 var death_scream_mode: bool = false
 
+var current_recording = preload("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 001.mp3")
+
 func _ready() -> void:
 	load_data_locked()
 	#save_score()
@@ -54,7 +58,8 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	so_called_score.text = "%d" % score
-
+	
+	
 	if (score > 57 and score < 71) or distance_mode:
 		if youhere.global_position != Vector2.ZERO:
 			youhere.visible = true
@@ -100,98 +105,307 @@ func _physics_process(delta: float) -> void:
 	if score > 9:
 		if score <= 19:
 			Narrator.text = "Oh, I'm late! Sorry, sorry, you must be terribly confused!"
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 001.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif score <= 20:
 			Narrator.text = "Oh my, you certainly have been busy. You died %d times!" % score
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 002.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 23:
 			Narrator.text = "Well, don't let me stop you! I'm sure whatever you are doing is very important."
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 003.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
+				
 		elif  score <= 24:
 			Narrator.text = ""
 		elif  score <= 25:
 			Narrator.text = "..."
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 004.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 28:
 			Narrator.text = "Are you trying to reach another platform? You keep missing it."
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 005.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
+				
 		elif  score <= 30:
 			Narrator.text = "Maybe try a running start?"
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 006.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 32:
 			Narrator.text = "Oh, nevermind."
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 007.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 36:
 			Narrator.text = "Oh! I got it! You're trying to fall!"
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 008.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 38:
 			Narrator.text = "You are very good at falling."
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 009.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 48:
 			"Oh! You aren't dying, you are diving! You're a sky diver!"
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 010.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 49:
 			Narrator.text = "Let me adjust that, and move that there..."
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 011.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 54:
 			Narrator.text = "Perfect!"
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 012.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 55:
 			Narrator.text = "What do you think?"
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 013.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 56:
 			Narrator.text = "No, that doesn't fit either!"
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 014.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 58:
 			Narrator.text = "Wait! I have an idea! I'll be right back. While you wait, see how far you can get!"
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 015.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 70:
 			Narrator.text = ""
+
 		elif  score <= 71:
 			Narrator.text = "TA-DAAAA!!!"
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 016.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 74:
 			Narrator.text = "BRAVE KNIGHT! Dragons are storming the castle! Defeat them before they inflate!!"
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 017.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 76:
 			Narrator.text = "Listen, the inflatable dragons were on sale! Stop questioning me, you'll miss the dragons!"
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 018.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 109:
 			Narrator.text = "Make sure to HOLD DOWN so that you can slice through the dragons as fast as possible."
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 019.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 111:
 			Narrator.text = "Nice job! You slew %d dragons!" % dragons_slayed
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 020.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
+				
 		elif  score <= 113:
 			Narrator.text = "You should be proud of yourself!"
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 021.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 115:
 			Narrator.text = "..."
 		elif  score <= 117:
 			Narrator.text = "You died, skydived, saw how far you could go, and fought dragons!"
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 022.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 119:
 			Narrator.text = "You fell (or jumped) left or right."
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 023.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 121:
 			Narrator.text = "Both are true."
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 024.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 123:
 			Narrator.text = "You did the same thing over, and over, and over, and the only thing that changed was how you viewed it."
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 025.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 125:
 			Narrator.text = "When something keeps occurring, it is NOT insane to expect something new. Even if nothing objectively changes, your perspective can change."
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 026.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 127:
 			Narrator.text = "You do something 100 times, hear something 100 times, see something 100 times, and you could find something new."
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 027.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 129:
 			Narrator.text = "This game is a small example of that. I hoped you learned something, or at least had some fun. Now, get up, and go perceive the world anew!"
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 028.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 131:
 			Narrator.text = "Open a door, take a walk, touch some grass! Stop playing this! Look at everything differently!"
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 029.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 133:
 			Narrator.text = "Go on! Shoo!"
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 030.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 135:
 			Narrator.text = "..."
 		elif  score <= 137:
 			Narrator.text = "Oh, you want more? Fine. Here's some toggles, and a level select. Go back to the main menu to unlock them (HOLD SPACE)."
 			locked = false
 			save_locked()
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 031.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 139:
 			Narrator.text = "Thats it."
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 032.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 139:
 			Narrator.text = "Or really, thats everything. Make your own goals! (And head to the main menu if you want any of the modifiers present in the game)."
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 033.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 141:
 			Narrator.text = "Can you yell in sync with your character?"
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 034.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 200:
 			Narrator.text = ""
 		elif  score <= 300:
 			Narrator.text = "That's some dedication."
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 035.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 400:
 			Narrator.text = "That's some serious dedication."
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 036.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 500:
 			Narrator.text = "Comment an idea for a modifier to how the game looks and your favorite food. I'll check back and add in a few I like!"
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 037.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 600:
 			Narrator.text = "Go touch grass."
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 038.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 750:
 			Narrator.text = "Bye. I'm glad you are this invested, but I have stuff to do."
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 039.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score <= 1000:
-			Narrator.text = "I said I have to go! Good day, sir!"
+			Narrator.text = "I said I have to go! Good day!"
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 040.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 		elif  score == 1003:
 			Narrator.text = "I'm not actually British."
+			current_recording = load("res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 041.mp3")
+			if voice.stream != current_recording:
+				voice.stream = current_recording
+				voice.stop()
+				voice.play()
 
 	if !locked:
 		if Input.is_action_just_pressed("restart_world"):

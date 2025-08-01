@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://3jne3wjiv2ny"
+path="res://.godot/imported/Record (online-voice-recorder.com) 032.mp3-78ee597aad75b7ee45dc7b9b9316b634.mp3str"
+
+[deps]
+
+source_file="res://Game Stuff/Sound/British narration/Record (online-voice-recorder.com) 032.mp3"
+dest_files=["res://.godot/imported/Record (online-voice-recorder.com) 032.mp3-78ee597aad75b7ee45dc7b9b9316b634.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
