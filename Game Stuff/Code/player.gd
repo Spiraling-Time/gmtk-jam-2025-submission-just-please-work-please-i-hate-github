@@ -48,8 +48,8 @@ func _ready() -> void:
 			scream_type = "death"
 			audio.volume_db = 20.0
 			audio.stream = load("res://Game Stuff/Sound/Sound Effects/scream-85294.mp3")
-	if (world.score > 71 and world.score < 110) or world.main_mode == "GLORY":$Sprite2D.texture = load("res://Game Stuff/Assets/Player with sword for Insanity sprite sheet.png")
-	else:  $Sprite2D.texture = load("res://Game Stuff/Assets/Player for Insanity  Sprite Sheet.png")
+	if (world.score > 71 and world.score < 110) or world.main_mode == "GLORY":$Sprite2D.texture = load("res://Game Stuff/Assets/sprite_sheet (1).png")
+	else:  $Sprite2D.texture = load("res://Game Stuff/Assets/sprite_sheet.png")
 
 
 func _physics_process(delta: float) -> void:
@@ -74,9 +74,10 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("down"):
 			velocity.y += gravity*2
 			turn_on_skinny_collision()
+			ani.play("Dive")
 			
 			
-	if touching_ground.get_overlapping_bodies().size() == 0: ani.play("Fall")
+	if touching_ground.get_overlapping_bodies().size() == 0 and ani.current_animation != "Dive": ani.play("Fall")
 	elif Input.is_action_pressed("up"):
 		jump.play()
 		ani.play("Jump")
