@@ -77,7 +77,8 @@ func _physics_process(delta: float) -> void:
 			ani.play("Dive")
 			
 			
-	if touching_ground.get_overlapping_bodies().size() == 0 and ani.current_animation != "Dive": ani.play("Fall")
+	if touching_ground.get_overlapping_bodies().size() == 0:
+		if ani.current_animation != "Dive": ani.play("Fall")
 	elif Input.is_action_pressed("up"):
 		jump.play()
 		ani.play("Jump")
