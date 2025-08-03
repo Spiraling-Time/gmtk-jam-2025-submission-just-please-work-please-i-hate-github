@@ -55,7 +55,7 @@ func _ready() -> void:
 	reset()
 	Narrator.text = " "
 	randomize()
-	print(screams)
+	#print(screams)
 	
 func _physics_process(delta: float) -> void:
 	so_called_score.text = "%d" % score

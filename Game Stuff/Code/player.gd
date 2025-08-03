@@ -95,14 +95,15 @@ func _physics_process(delta: float) -> void:
 		
 		if (world.score > 71 and world.score < 110) or world.main_mode == "GLORY":
 			if fake_world.side == "left" and dragons1.position.y > -100:
-				if global_position.x < 0: world.dragons_slayed += 3
-				fake_world.hide_dragons()
-				pop.play()
+				if global_position.x < 0:
+					world.dragons_slayed += 3
+					fake_world.hide_dragons()
+					pop.play()
 			elif fake_world.side == "right" and dragons2.position.y > -100:
-				if global_position.x > 0: world.dragons_slayed += 3
-				fake_world.hide_dragons()
-				pop.play()
-		
+				if global_position.x > 0:
+					world.dragons_slayed += 3
+					fake_world.hide_dragons()
+					pop.play()
 		
 	
 	
